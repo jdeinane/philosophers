@@ -6,22 +6,21 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/16 16:46:51 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:20:01 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <stdbool.h>
 # include <unistd.h>
+# include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <pthread.h>
-# include <sys/time.h>
-# include <sys/types.h>
-# include <stdint.h>
 # include <string.h>
+# include <sys/time.h>
+# include <stdint.h>
+# include <stdbool.h>
 
 # define WRONG_INPUT 1
 # define MALLOC_ERROR 2
@@ -45,15 +44,38 @@ typedef enum e_state
 typedef struct	s_philo
 {
 	int					id;
-	int					nb_meals;
-	struct s_data		*data;
+	int					nb_meals_had;
 	t_state				state;
-	phtread_mutex_t		*l_fork;
+	u_int64_t			last_meal_time;
+	struct s_data		*data;
+	pthread_mutex_t		*l_fork;
 	pthread_mutex_t		*r_fork;
-	phthread_mutex_t	mut_state;
-	phthread_mutex_t	mut_nb_meals;
-	phthread_mutex_t	mut_last_meal; //time
-	u_int64_t			last_meal; //time
+	pthread_mutex_t		mut_state;
+	pthread_mutex_t		mut_nb_meals_had;
+	pthread_mutex_t		mut_last_meal_time;
 }	t_philo;
+
+typedef struct	s_data
+{
+	int					nb_philos;
+	int					nb_meals;
+	bool				keep_iterating;
+	u_int64_t			start_time;
+	u_int64_t			eat_time;
+	u_int64_t			die_time;
+	u_int64_t			sleep_time;
+	pthread_t			monit_all_alive;
+	pthread_t			monit_all_full;
+	pthread_t			*philo_ths;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		mut_eat_t;
+	pthread_mutex_t		mut_die_t;
+	pthread_mutex_t		mut_print;
+	pthread_mutex_t		mut_nb_philos;
+	pthread_mutex_t		mut_keep_iter;
+	pthread_mutex_t		mut_start_time;
+}	t_data;
+
+
 
 #endif

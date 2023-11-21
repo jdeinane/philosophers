@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/20 17:20:01 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/21 13:45:30 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <sys/types.h>
 # include <stdint.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 # define WRONG_INPUT 1
 # define MALLOC_ERROR 2
@@ -41,7 +43,7 @@ typedef enum e_state
 	IDLE = 5,
 }	t_state;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int					id;
 	int					nb_meals_had;
@@ -55,11 +57,13 @@ typedef struct	s_philo
 	pthread_mutex_t		mut_last_meal_time;
 }	t_philo;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int					nb_philos;
 	int					nb_meals;
-	bool				keep_iterating;
+	int					nb_full_p;
+	bool				iterate;
+	t_philo				*philos;
 	u_int64_t			start_time;
 	u_int64_t			eat_time;
 	u_int64_t			die_time;
@@ -70,12 +74,11 @@ typedef struct	s_data
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		mut_eat_t;
 	pthread_mutex_t		mut_die_t;
+	pthread_mutex_t		mut_sleep_t;
 	pthread_mutex_t		mut_print;
 	pthread_mutex_t		mut_nb_philos;
 	pthread_mutex_t		mut_keep_iter;
 	pthread_mutex_t		mut_start_time;
 }	t_data;
-
-
 
 #endif

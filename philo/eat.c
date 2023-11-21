@@ -6,23 +6,11 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:11:32 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/21 15:30:41 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:06:17 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	take_forks(t_philo *philosopher)
-{
-	pthread_mutex_lock(philosopher->l_fork);
-	pthread_mutex_lock(philosopher->r_fork);
-}
-
-void	release_forks(t_philo *philosopher)
-{
-	pthread_mutex_unlock(philosopher->l_fork);
-	pthread_mutex_unlock(philosopher->r_fork);
-}
 
 void	update_meal(t_philo *philosopher)
 {

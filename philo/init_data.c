@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:20:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/21 13:47:28 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:44:34 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	init_mutex(t_data *data)
 {
 	pthread_mutex_init(&data->mut_eat_t, NULL);
 	pthread_mutex_init(&data->mut_die_t, NULL);
-	pthread_mutex_init(&data->mut_sleep_t, NULL);
 	pthread_mutex_init(&data->mut_sleep_t, NULL);
 	pthread_mutex_init(&data->mut_print, NULL);
 	pthread_mutex_init(&data->mut_nb_philos, NULL);

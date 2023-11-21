@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:20:25 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/21 13:45:48 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/21 15:30:33 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,11 @@ int	malloc_error(t_data *data)
 {
 	if (!data)
 		return (MALLOC_ERROR);
+}
+
+u_int64_t	get_timestamp() //function to get the current timestamp in ms
+{
+	struct timeval	current_time;
+	gettimeofday(&current_time, NULL);
+	return (u_int64_t)(current_time.tv_sec * 1000) + (u_int16_t)(current_time.tv_sec / 1000);
 }

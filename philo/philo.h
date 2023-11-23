@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/23 17:03:31 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/23 19:03:34 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_philo
 	int					nb_times_to_eat;
 	size_t				last_meal;
 	size_t				time_to_die;
-	size_t				times_to_eat;
+	size_t				time_to_eat;
 	size_t				time_to_sleep;
 	size_t				start_time;
 	pthread_mutex_t		*r_fork;

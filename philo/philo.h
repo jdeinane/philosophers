@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/23 19:03:34 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/27 17:48:56 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 	size_t				time_to_eat;
 	size_t				time_to_sleep;
 	size_t				start_time;
+	pthread_t			thread;
 	pthread_mutex_t		*r_fork;
 	pthread_mutex_t		*l_fork;
 	pthread_mutex_t		*write_lock;
@@ -48,5 +49,40 @@ typedef struct s_prog
 	pthread_mutex_t		dead_lock;
 	pthread_mutex_t		meal_lock;
 }	t_prog;
+
+// data initialization
+void	init_args(t_philo *philo, char **av);
+void	init_forks(pthread_mutex_t *forks, int nb_philo);
+void	init_data(t_philo *philos, t_prog *prog, pthread_mutex_t *forks, char **av);
+void	init_prog(t_prog *prog, t_philo *philos);
+
+// threads creation
+void	philo_threads(t_prog *prog, pthread_mutex_t *forks);
+void	dead_loop(t_philo *philo);
+void	*monitor(void *arg);
+
+// routine
+void	philo_routine(t_philo *philo);
+
+// philosophers actions
+void	philo_eat(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
+
+// check philo state
+int		all_philo_ate(t_philo *philos);
+int		philo_died(t_philo *philo, size_t time_to_die);
+int		is_philo_dead(t_philo *philos);
+
+// utils
+int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+size_t	get_timestamp(void);
+int		ft_usleep(size_t ms);
+void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks);
+
+// main
+int		check_args(char **av);
+int		main(int ac, char **av);
 
 #endif

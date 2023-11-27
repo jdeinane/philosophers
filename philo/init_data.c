@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:54:09 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/23 20:39:50 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/27 17:36:14 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ void	init_forks(pthread_mutex_t *forks, int nb_philo)
 	}
 }
 
-void	init_data(t_philo *philos, t_prog *prog,
-					pthread_mutex_t *forks, char **av)
+void	init_data(t_philo *philos, t_prog *prog, pthread_mutex_t *forks, char **av)
 {
 	int	i;
 
 	i = 0;
-	while (i < philos->nb_of_philos)
+	while (i < philos->ft_atoi(av[1]))
 	{
 		init_args(&philos[i], av);
 		philos[i].id = i + 1;
@@ -52,8 +51,8 @@ void	init_data(t_philo *philos, t_prog *prog,
 		philos[i].write_lock = &prog->write_lock;
 		philos[i].dead_lock = &prog->dead_lock;
 		philos[i].meal_lock = &prog->meal_lock;
-		philos[i].last_meal = get_timestamp();
-		philos[i].start_time = get_timestamp();
+		philos[i].last_meal = get_current_time();
+		philos[i].start_time = get_current_time();
 		philos[i].l_fork = &forks[i];
 		if (i == 0)
 			philos[i].r_fork = &forks[philos[i].nb_of_philos - 1];

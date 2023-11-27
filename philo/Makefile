@@ -6,13 +6,14 @@
 #    By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 17:45:17 by jubaldo           #+#    #+#              #
-#    Updated: 2023/11/21 12:29:44 by jubaldo          ###   ########.fr        #
+#    Updated: 2023/11/27 17:49:37 by jubaldo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	philo
 
-SRCS		=	init_data.c main.c monitor.c utils.c routine.c
+SRCS		=	check_state.c eat.c init_data.c main.c routine.c sleep.c think.c \
+				threads.c utils.c
 	
 CC			=	cc
 

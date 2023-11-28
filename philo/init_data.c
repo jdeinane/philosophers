@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:54:09 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 12:57:33 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 15:06:03 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	init_forks(pthread_mutex_t *forks, int nb_philo)
 	}
 }
 
-void	init_data(t_philo *philos, t_prog *prog, pthread_mutex_t *forks, char **av)
+void	init_data(t_philo *philos, t_prog *prog, \
+					pthread_mutex_t *forks, char **av)
 {
 	int	i;
 

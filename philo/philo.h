@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 13:36:59 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 15:05:34 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ typedef struct s_prog
 // data initialization
 void	init_args(t_philo *philo, char **av);
 void	init_forks(pthread_mutex_t *forks, int nb_philo);
-void	init_data(t_philo *philos, t_prog *prog, pthread_mutex_t *forks, char **av);
+void	init_data(t_philo *philos, t_prog *prog, \
+pthread_mutex_t *forks, char **av);
 void	init_prog(t_prog *prog, t_philo *philos);
 
 // threads creation
@@ -78,7 +79,7 @@ int		is_philo_dead(t_philo *philos);
 int		ft_atoi(const char *str);
 int		ft_isdigit(char *str);
 int		ft_usleep(size_t ms);
-int	ft_strlen(char *str);
+int		ft_strlen(char *str);
 void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks);
 size_t	get_timestamp(void);
 

@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:22:55 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 13:20:48 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 15:06:57 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 int	ft_usleep(size_t ms)
 {
 	size_t	start;
-	
+
 	start = get_timestamp();
 	while (get_timestamp() - start < ms)
 		usleep(500);
@@ -67,23 +67,6 @@ size_t	get_timestamp(void)
 	if (gettimeofday(&time, NULL) == -1)
 		write(2, "getting time error\n", 19);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
-void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks)
-{
-	int	i;
-
-	i = 0;
-	if (str)
-	{
-		write(2, str, ft_strlen(str));
-		write(2, "\n", 1);
-	}
-	pthread_mutex_destroy(&prog->write_lock);
-	pthread_mutex_destroy(&prog->meal_lock);
-	pthread_mutex_destroy(&prog->dead_lock);
-	while (i <prog->philos[0].nb_of_philos)
-		pthread_mutex_destroy(&forks[i++]);
 }
 
 int	ft_strlen(char *str)

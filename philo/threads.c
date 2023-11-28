@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:29:39 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 13:19:38 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 15:09:30 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	philo_threads(t_prog *prog, pthread_mutex_t *forks)
 	{
 		if (pthread_create(&prog->philos[i].thread, NULL, \
 			&philo_routine, &prog->philos[i]) != 0)
-			destroy_mutex("Error encountered while creating thread\n", prog, forks);
+			destroy_mutex("Error encountered while creating thread\n", \
+			prog, forks);
 		i++;
 	}
 	i = 0;
@@ -33,7 +34,8 @@ int	philo_threads(t_prog *prog, pthread_mutex_t *forks)
 	while (i < prog->philos[0].nb_of_philos)
 	{
 		if (pthread_join(prog->philos[i].thread, NULL) != 0)
-			destroy_mutex("Error encountered while joining thread\n", prog, forks);
+			destroy_mutex("Error encountered while joining thread\n", \
+			prog, forks);
 		i++;
 	}
 	return (0);
@@ -67,4 +69,21 @@ void	*monitor(void *arg)
 			return (arg);
 		}
 	}
+}
+
+void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+	{
+		write(2, str, ft_strlen(str));
+		write(2, "\n", 1);
+	}
+	pthread_mutex_destroy(&prog->write_lock);
+	pthread_mutex_destroy(&prog->meal_lock);
+	pthread_mutex_destroy(&prog->dead_lock);
+	while (i < prog->philos[0].nb_of_philos)
+		pthread_mutex_destroy(&forks[i++]);
 }

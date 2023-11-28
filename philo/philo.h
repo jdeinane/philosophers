@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/27 17:48:56 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 13:21:12 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	init_data(t_philo *philos, t_prog *prog, pthread_mutex_t *forks, char **av)
 void	init_prog(t_prog *prog, t_philo *philos);
 
 // threads creation
-void	philo_threads(t_prog *prog, pthread_mutex_t *forks);
-void	dead_loop(t_philo *philo);
+int		philo_threads(t_prog *prog, pthread_mutex_t *forks);
+int		dead_loop(t_philo *philo);
 void	*monitor(void *arg);
 
 // routine
-void	philo_routine(t_philo *philo);
+void	*philo_routine(void *arg);
 
 // philosophers actions
 void	philo_eat(t_philo *philo);
@@ -76,10 +76,11 @@ int		is_philo_dead(t_philo *philos);
 
 // utils
 int		ft_atoi(const char *str);
-int		ft_isdigit(int c);
-size_t	get_timestamp(void);
+int		ft_isdigit(char *str);
 int		ft_usleep(size_t ms);
+int	ft_strlen(char *str);
 void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks);
+size_t	get_timestamp(void);
 
 // main
 int		check_args(char **av);

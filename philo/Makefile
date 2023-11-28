@@ -6,7 +6,7 @@
 #    By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 17:45:17 by jubaldo           #+#    #+#              #
-#    Updated: 2023/11/27 17:49:37 by jubaldo          ###   ########.fr        #
+#    Updated: 2023/11/28 13:23:14 by jubaldo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ OBJS		=	$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			make -C
 			$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
 			@echo "\033[32m ~~ ./philo successfully created! ~~"
 			@echo "$$BIBOU"

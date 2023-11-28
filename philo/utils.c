@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:22:55 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/27 17:41:30 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 13:20:48 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,14 @@ void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks)
 	pthread_mutex_destroy(&prog->dead_lock);
 	while (i <prog->philos[0].nb_of_philos)
 		pthread_mutex_destroy(&forks[i++]);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

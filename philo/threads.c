@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:29:39 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/27 17:35:36 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 13:19:38 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ int	philo_threads(t_prog *prog, pthread_mutex_t *forks)
 	return (0);
 }
 
-void	dead_loop(t_philo *philo)
+int	dead_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->dead_lock);
-	philo->dead = 1;
+	if (*philo->dead == 1)
+	{
+		pthread_mutex_unlock(philo->dead_lock);
+		return (1);
+	}
 	pthread_mutex_unlock(philo->dead_lock);
+	return (1);
 }
 
 void	*monitor(void *arg)
@@ -57,7 +62,7 @@ void	*monitor(void *arg)
 		i = 0;
 		while (i < philo[0].nb_of_philos)
 		{
-			if (philo[i].dead == 1 || all_philo_ate(philo) == 1)
+			if (*(philo[i].dead) == 1 || all_philo_ate(philo) == 1)
 				break ;
 			return (arg);
 		}

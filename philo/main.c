@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:17:32 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/27 17:45:00 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/28 13:22:30 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_args(char **av)
 {
-	if (ft_atoi(av[1]) > PHILO_MAX || ft_atoi(av[1] <= 0) || ft_isdigit(av[1]) == 1)
+	if (ft_atoi(av[1]) > PHILO_MAX || ft_atoi(av[1]) <= 0 || ft_isdigit(av[1]) == 1)
 		printf("Error: Invalid number of philosophers\n");
 	if (ft_atoi(av[2]) <= 0 || ft_isdigit(av[2]) == 1)
 		printf("Error: Invalid time to die\n");
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	if (ac == 5 || ac == 6)
 	{
 		init_prog(&prog, philos);
-		init_forks(&prog, ft_atoi(av[1]));
+		init_forks(forks, ft_atoi(av[1]));
 		init_data(philos, &prog, forks, av);
 		philo_threads(&prog, forks);
 		destroy_mutex(NULL, &prog, forks);

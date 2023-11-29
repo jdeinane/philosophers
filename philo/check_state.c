@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:02:27 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 15:04:41 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/29 17:23:34 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	is_philo_dead(t_philo *philos)
 	{
 		if (philo_died(&philos[i], philos[i].time_to_die))
 		{
-			printf("%ld Philosopher %d died\n", get_timestamp(), philos->id);
+			print_state("died", &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[0].dead_lock);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[0].dead_lock);

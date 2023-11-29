@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:45:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 15:05:34 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/29 17:20:16 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		ft_atoi(const char *str);
 int		ft_isdigit(char *str);
 int		ft_usleep(size_t ms);
 int		ft_strlen(char *str);
+void	print_state(char *str, t_philo *philo, int id);
 void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks);
 size_t	get_timestamp(void);
 

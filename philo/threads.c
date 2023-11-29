@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:29:39 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 15:09:30 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/29 17:19:11 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,4 @@ void	*monitor(void *arg)
 			return (arg);
 		}
 	}
-}
-
-void	destroy_mutex(char *str, t_prog *prog, pthread_mutex_t *forks)
-{
-	int	i;
-
-	i = 0;
-	if (str)
-	{
-		write(2, str, ft_strlen(str));
-		write(2, "\n", 1);
-	}
-	pthread_mutex_destroy(&prog->write_lock);
-	pthread_mutex_destroy(&prog->meal_lock);
-	pthread_mutex_destroy(&prog->dead_lock);
-	while (i < prog->philos[0].nb_of_philos)
-		pthread_mutex_destroy(&forks[i++]);
 }

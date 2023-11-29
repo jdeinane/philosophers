@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:54:09 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/28 15:06:03 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/11/29 16:54:16 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ void	init_data(t_philo *philos, t_prog *prog, \
 	int	i;
 
 	i = 0;
-	while (i < philos->nb_of_philos)
+	while (i < ft_atoi(av[1]))
 	{
-		init_args(&philos[i], av);
 		philos[i].id = i + 1;
-		philos[i].dead = &prog->dead_flag;
 		philos[i].eating = 0;
 		philos[i].meals_eaten = 0;
+		init_args(&philos[i], av);
+		philos[i].start_time = get_timestamp();
+		philos[i].last_meal = get_timestamp();
 		philos[i].write_lock = &prog->write_lock;
 		philos[i].dead_lock = &prog->dead_lock;
 		philos[i].meal_lock = &prog->meal_lock;
-		philos[i].last_meal = get_timestamp();
-		philos[i].start_time = get_timestamp();
+		philos[i].dead = &prog->dead_flag;
 		philos[i].l_fork = &forks[i];
 		if (i == 0)
 			philos[i].r_fork = &forks[philos[i].nb_of_philos - 1];

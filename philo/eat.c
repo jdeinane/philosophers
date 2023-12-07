@@ -5,29 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 12:40:44 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/27 18:01:59 by jubaldo          ###   ########.fr       */
+/*   Created: 2023/12/07 11:11:03 by jubaldo           #+#    #+#             */
+/*   Updated: 2023/12/07 11:45:36 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_eat(t_philo *philo)
+static void	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
-	printf("%ld Philosopher %d has taken a fork\n", get_current_time(), philo->id);
+	print_status("has taken a fork", philo, philo->id);
 	if (philo->nb_of_philos == 1)
 	{
 		ft_usleep(philo->time_to_die);
-		pthread_mutex_unlock(philo->r_fork);
+		pthread_mutex_lock(philo->r_fork);
 		return ;
 	}
-	phtread_mutex_lock(&philo->l_fork);
-	printf("%ld Philosopher %d has taken a fork\n", get_current_time(), philo->id);
-	philo->eating = 1;
-	printf("%ld Philosopher %d is eating\n", get_current_time(), philo->id);
-	
+	pthread_mutex_lock(philo->l_fork);
+	print_status("has taken a fork", philo, philo->id);
+}
+
+static void	update_meal(t_philo *philo)
+{
+	pthread_mutex_lock(philo->meal_lock);
+	philo->last_meal = get_timestamp();
+	philo->meals_eaten++;
+	pthread_mutex_unlock(philo->meal_lock);
 	ft_usleep(philo->time_to_eat);
-	pthread_mutex_unlock(&philo->r_fork);
-	pthread_mutex_unlock(&philo->l_fork);
+}
+
+static void	release_forks(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->l_fork);
+	pthread_mutex_unlock(philo->r_fork);
+}
+
+void	philo_eat(t_philo *philo)
+{
+	take_forks(philo);
+	philo->eat = 1;
+	print_status("is eating", philo, philo->id);				
+	update_meal(philo);
+	philo->eat = 0;
+	release_forks(philo);
 }

@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/13 17:45:17 by jubaldo           #+#    #+#              #
-#    Updated: 2023/11/27 17:49:37 by jubaldo          ###   ########.fr        #
+#    Created: 2023/11/10 13:03:47 by jubaldo           #+#    #+#              #
+#    Updated: 2023/12/07 11:43:40 by jubaldo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	philo
 
-SRCS		=	check_state.c eat.c init_data.c main.c routine.c sleep.c think.c \
-				threads.c utils.c
+SRCS		=	checking.c eat.c init_data.c main.c routine.c sleep.c \
+				think.c time.c utils.c
 	
 CC			=	cc
 
@@ -24,7 +24,6 @@ OBJS		=	$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			make -C
 			$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
 			@echo "\033[32m ~~ ./philo successfully created! ~~"
 			@echo "$$BIBOU"

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 12:41:20 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/11/27 13:04:00 by jubaldo          ###   ########.fr       */
+/*   Created: 2023/11/12 11:09:37 by jubaldo           #+#    #+#             */
+/*   Updated: 2023/12/07 11:45:27 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	philo_think(t_philo *philo)
 {
-	printf("%ld Philosopher %d is thinking\n", get_current_time(), philo->id);
+	print_status("is thinking", philo, philo->id);
 }

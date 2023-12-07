@@ -5,8 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2023/11/10 13:03:45 by jubaldo           #+#    #+#             */
 /*   Updated: 2023/12/07 14:56:59 by jubaldo          ###   ########.fr       */
+=======
+/*   Created: 2023/12/01 15:01:41 by jubaldo           #+#    #+#             */
+/*   Updated: 2023/12/01 15:02:24 by jubaldo          ###   ########.fr       */
+>>>>>>> e507660ab7c9c6ccb020190a16db30cd7613fbd9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +24,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+<<<<<<< HEAD
 # define PHILO_MAX 200
 
 typedef struct s_philo
@@ -85,5 +91,31 @@ int		ft_usleep(size_t ms);
 void	destroy_all(char *str, t_data *data, pthread_mutex_t *forks);
 void	print_status(char *str, t_philo *philo, int id);
 size_t	get_timestamp(void);
+=======
+typedef struct s_data
+{
+	int					nb_of_philos;
+	int					nb_times_to_eat;
+	int					finished_meal;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					*forks_status;
+	int					end;
+	size_t				start_time;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t		mut_end;
+}	t_data;
+
+typedef struct s_philo
+{
+	int					r_fork;
+	int					l_fork;
+	t_data				*philos;
+	int					id;
+	int					nb_meal;
+	int					last_meal;
+}	t_philo;
+>>>>>>> e507660ab7c9c6ccb020190a16db30cd7613fbd9
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:32:46 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/08 11:32:48 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:48:18 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ int		check_meal(t_philo *philos);
 void	*monitor(void *arg);
 
 // main
-int	check_args(char **av);
-int	main(int ac, char **av);
+int		check_args(char **av);
+int		main(int ac, char **av);
 
 // utils
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		ft_isdigit(char *str);
-int		ft_usleep(size_t ms);
 void	destroy_all(char *str, t_data *data, pthread_mutex_t *forks);
 void	print_status(char *str, t_philo *philo, int id);
 size_t	get_timestamp(void);
+size_t		ft_usleep(size_t ms);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:08:07 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/07 15:13:15 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 14:58:02 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_args(t_philo *philo, char **av)
 {
+	philo->nb_of_philos = ft_atoi(av[1]);
 	philo->time_to_die = ft_atoi(av[2]);
 	philo->time_to_eat = ft_atoi(av[3]);
 	philo->time_to_sleep = ft_atoi(av[4]);
-	philo->nb_of_philos = ft_atoi(av[1]);
 	if (av[5])
 		philo->nb_times_to_eat = ft_atoi(av[5]);
 	else

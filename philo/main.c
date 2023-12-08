@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:31:08 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/08 11:41:50 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:15:46 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,15 @@ int	check_args(char **av)
 {
 	if (ft_atoi(av[1]) > PHILO_MAX || ft_atoi(av[1]) <= 0 \
 	|| ft_isdigit(av[1]) == 1)
-	{
-		printf("Error: missing/too much philosophers\n");
-		return (1);
-	}
+		return (printf("Error: missing/too much philosophers\n"), 1);
 	if (ft_atoi(av[2]) <= 0 || ft_isdigit(av[2]) == 1)
-	{
-		printf("Error: time to die is not valid\n");
-		return (1);
-	}
+		return (printf("Error: time to die is not valid\n"), 1);
 	if (ft_atoi(av[3]) <= 0 || ft_isdigit(av[3]) == 1)
-	{
-		printf("Error: time to eat is not valid\n");
-		return (1);
-	}
+		return (printf("Error: time to eat is not valid\n"), 1);
 	if (ft_atoi(av[4]) <= 0 || ft_isdigit(av[4]) == 1)
-	{
-		printf("Error: time to sleep is not valid\n");
-		return (1);
-	}
+		return (printf("Error: time to sleep is not valid\n"), 1);
 	if (av[5] && (ft_atoi(av[5]) < 0 || ft_isdigit(av[5]) == 1))
-	{
-		printf("Error: invalid number of meals for each philo\n");
-		return (1);
-	}
+		return (printf("Error: invalid number of meals for each philo\n"), 1);
 	return (0);
 }
 

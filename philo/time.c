@@ -6,13 +6,13 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 16:04:03 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/07 15:05:19 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:48:11 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_usleep(size_t ms)
+size_t	ft_usleep(size_t ms)
 {
 	size_t	start;
 

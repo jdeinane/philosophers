@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:54:04 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/07 14:53:23 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:08:03 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	check_death(t_philo *philo, size_t time_to_die)
 	pthread_mutex_lock(philo->meal_lock);
 	if (get_timestamp() - philo->last_meal >= time_to_die
 		&& philo->eat == 0)
-		return (pthread_mutex_unlock(philo->meal_lock), 1);
+	{
+		pthread_mutex_unlock(philo->meal_lock);
+		return (1);
+	}
 	pthread_mutex_unlock(philo->meal_lock);
 	return (0);
 }

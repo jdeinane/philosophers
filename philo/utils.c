@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:30:02 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/07 14:58:38 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 14:59:46 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	ft_isdigit(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] >= '9')
+		if (str[i] < '0' || str[i] > '9')
 			return (1);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:11:03 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/07 11:45:36 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/08 11:35:57 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	take_forks(t_philo *philo)
 	if (philo->nb_of_philos == 1)
 	{
 		ft_usleep(philo->time_to_die);
-		pthread_mutex_lock(philo->r_fork);
+		pthread_mutex_unlock(philo->r_fork);
 		return ;
 	}
 	pthread_mutex_lock(philo->l_fork);

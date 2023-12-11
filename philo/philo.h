@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:32:46 by jubaldo           #+#    #+#             */
-/*   Updated: 2023/12/08 23:32:54 by jubaldo          ###   ########.fr       */
+/*   Updated: 2023/12/09 18:19:52 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ typedef struct s_data
 
 // init data
 void	init_args(t_philo *philo, char **av);
-void	init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks, char **av);
+void	init_philos(t_philo *philos, t_data *data, \
+		pthread_mutex_t *forks, char **av);
 void	init_forks(pthread_mutex_t *forks, int philos);
 void	init_data(t_data *data, t_philo *philos);
 int		init_thread(t_data *data, pthread_mutex_t *forks);
-
 
 // philo routine
 void	philo_eat(t_philo *philo);
@@ -66,7 +66,6 @@ void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	*philo_routine(void *arg);
 int		dead_loop(t_philo *philo);
-
 
 // check philo state
 int		check_death(t_philo *philo, size_t time_to_die);
@@ -85,6 +84,6 @@ int		ft_isdigit(char *str);
 void	destroy_all(char *str, t_data *data, pthread_mutex_t *forks);
 void	print_status(char *str, t_philo *philo, int id);
 size_t	get_timestamp(void);
-size_t		ft_usleep(size_t ms);
+size_t	ft_usleep(size_t ms);
 
 #endif

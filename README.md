@@ -8,6 +8,8 @@ In this simulation, we'll encounter a scenario where multiple philosophers are s
 
 ### Key Concepts:
 
+![The Dining Philosophers Problem]((https://upload.wikimedia.org/wikipedia/commons/7/7b/An_illustration_of_the_dining_philosophers_problem.png)"Optional title")
+
 This project will allow us to learn a lot of new concepts, functions and notions, such as:
 - **Concurrency & Synchronization**: Understand and apply techniques to manage concurrent execution and synchronize shared resources.
 - **Threads & Processes**: Explore the use of threads for the mandatory part and processes for the bonus part, each serving as a philosopher in the simulation.
